@@ -1,0 +1,53 @@
+@model EcommerceApp.Models.Goods
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="row">
+          <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @Model.Name
+                                    <a class="text-white float-right"><i class="bi bi-pencil-square"></i></a>
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@Model.ProfilePicture" width="100%" alt="@Model.Name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@Model.Description</p>
+                            <p class="card-text"><b>Category: </b>@Model.Category</p>
+                            <p class="card-text"><b>Quantity: </b>@Model.Quantity</p>
+                            <p class="card-text">
+                                <b>Status: </b>
+                                @if (@Model.Quantity >= 1)
+                {
+                    <span class="badge bg-success text-white"IN-STOCK></span>
+                }
+                else
+                {
+                    <span class="badge bg-primary text-white"OUT-OF-STOCK"></span>
+                }
+                            </p>
+                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-controller="Goods" asp-action="Details"><i class="bi bi-eye-fill"></i> Show Details</a>
+                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
